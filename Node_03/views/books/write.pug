@@ -1,0 +1,51 @@
+extends ../index
+
+block body
+
+    script.
+        $(function(){
+            $("#btn_insert").click(function(){
+                // alert("추가버튼 클릭")
+                let name = $("#bName").val()
+                $.get("/book/name",{name:name},function(result){
+                    if(result){
+                    let retName = result.bName
+                    alert(retName + "\n" + name)
+                    if(name == retName){
+                        alert("이미 등록된 도서 입니다.")
+                        return false
+                    }    
+                }
+                    
+                    $("form").submit()
+                })
+                
+            })
+            $("#btn_delete").click(function(){
+                if(confirm("삭제할까요")){
+                    let id = $(this).data("id")
+                    document.location.replace("/book/delete/"+ id)
+                }
+            })
+            $("#btn_list").click(function(){
+                document.location.replace("/book")
+            })
+        })
+
+    form(method='POST')
+        - var inputClasses = ['w3-input']
+        .w3-container
+            input#bName(name="bName", type='text',value=book.bName, class=inputClasses,placeholder='이름')
+        .w3-container
+            input#bWriter(name="bWriter", type='text', value=book.bWriter,class=inputClasses,placeholder='저자')
+        .w3-container
+            input#bComp(name="bComp", type='text',value=book.bComp, class=inputClasses,placeholder='출판사')
+        .w3-container
+            input#bYear(name="bYear", type='text', value=book.bYear,class=inputClasses,placeholder='출판년도')
+        .w3-container
+            input#bPrice(name="bPrice", type='text',value=book.bPrice,class=inputClasses,placeholder='가격')
+        - var btnClasses = ['w3-button','w3-blue','w3-right','w3-margin-right']
+            button#btn_insert(type="button", class=btnClasses)= btnText
+            button#btn_delete(type="button", class=btnClasses,data-id=book._id).w3-red 삭제
+            button#btn_list(type="button", class=btnClasses).w3-green 목록으로
+        
