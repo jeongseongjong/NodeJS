@@ -26,7 +26,7 @@ database.sequelize = sequelize
 // Sequealize 클래스를 static으로 사용하기 위한 설정
 database.DataTypes = Sequelize
 
-// seq 객체와 Sequ 클래스를 staetic으로 매개변수로 전달
+// seq 객체와 Sequ 클래스를 static으로 매개변수로 전달
 database.bbsVO = require("./bbsVO")(sequelize,Sequelize)
 
 module.exports = database
