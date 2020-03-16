@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+
+    div.container
+        div.jumbotron.text-center
+            h2.font-weight-bold 도서 검색결과
+
+    div.container
+        div.form-group.mb-5
+            form(action="/naver/book")
+                input(name="search",placeholder="검색어를 입력하라").form-control
+
+    div.container
+
+        each book, index in books
+
+            div.row
+                div.col-3.d-flex.justify-content-center
+                    img(src=book.image)
+                div.col-9
+                    div.align-self-center
+                        p= '제목: '
+                            a(href= book.link).mr-2 !{book.title}
+                            small= book.author
+                        p= '판매가격: ' + book.price
+                        p= '할인가격: ' + book.discount
+                        p= '출판사: ' + book.publisher
+                        p= 'ISBN: ' + book.isbn
+                        p= '출간일: ' + book.pubdate
+            <hr>
