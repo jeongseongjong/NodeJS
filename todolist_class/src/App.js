@@ -74,7 +74,7 @@ class App extends Component {
     const { todoList } = this.state;
 
     // id 매개변수 변수에 담겨있는 값이
-    // 객체 배열의 몇번째 위치ㄱ밧이냐
+    // 객체 배열의 몇번째 위치값이냐
     const index = todoList.findIndex(todo => todo.id === id);
 
     // 인덱스에 해당하는 요소를 추출
