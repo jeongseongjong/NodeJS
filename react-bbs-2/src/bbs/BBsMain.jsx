@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import BBsList from "./BBsList";
 import BBsInsert from "./BBsInsert";
 
-const BBS_MAIN_URL = "http://localhost:5000/bbs";
+const BBS_FETCH_URL = "http://localhost:5000/bbs";
 const BBS_INSERT_URL = "http://localhost:5000/bbs/insert";
 
 class BBsMain extends Component {
@@ -48,7 +48,7 @@ class BBsMain extends Component {
     // ES6 js에 새로운 Ajax method가 있는데
     // 새로운 method를 사용해서 데이터를 조회해 오기
 
-    fetch(BBS_MAIN_URL)
+    fetch(BBS_FETCH_URL)
       .then(response => {
         // 문자열형으로 return된 가져온 데이터를
         // json타입으로 변환하여 return 하라
@@ -88,8 +88,8 @@ class BBsMain extends Component {
           <p className="w3-container w3-gray">
             {this.state.isFetch ? "데이터 가져오는중..." : "완료..."}
           </p>
-          <BBsInsert bbs_insert_url={BBS_MAIN_URL} />
-          <BBsList bbsList={bbsList} bbs_main_url={BBS_MAIN_URL} />
+          <BBsInsert bbs_insert_url={BBS_INSERT_URL} />
+          <BBsList bbsList={bbsList} />
         </section>
       </div>
     );
